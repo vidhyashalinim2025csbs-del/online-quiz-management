@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Online Quiz Management System</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #f0f4ff;
@@ -30,7 +35,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 15px;
+            margin: 12px;
         }
 
         .container {
@@ -55,14 +60,15 @@
 
         .question label {
             display: block;
-            margin: 10px 0;
+            margin: 12px 0;
         }
 
         button {
             background: #4338ca;
             color: white;
             border: none;
-            padding: 12px 22px;
+            padding: 12px 20px;
+            margin: 5px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
@@ -90,7 +96,7 @@
 
 <header id="home">
     <h1>Online Quiz Management System</h1>
-    <p>Test Your Knowledge!</p>
+    <p>Test Your Knowledge and Improve Your Skills!</p>
 </header>
 
 <nav>
@@ -101,12 +107,12 @@
 
 <div class="container" id="quiz">
     <h2>Computer Science Quiz</h2>
-    <p>Select one answer for each question.</p>
+    <p>Choose one answer for each question.</p>
 
     <form id="quizForm">
 
         <div class="question">
-            <p>1. Which language is commonly used for object-oriented programming?</p>
+            <p>1. Which language supports object-oriented programming?</p>
             <label><input type="radio" name="q1" value="a" required> HTML</label>
             <label><input type="radio" name="q1" value="b"> Java</label>
             <label><input type="radio" name="q1" value="c"> CSS</label>
@@ -153,7 +159,7 @@
     <p>
         The Online Quiz Management System is a web application
         that allows students to answer multiple-choice questions
-        and view their scores immediately after submission.
+        and view their scores after submitting the quiz.
     </p>
 </div>
 
@@ -161,42 +167,7 @@
     <p>Online Quiz Management System | Student Project</p>
 </footer>
 
-<script>
-    const quizForm = document.getElementById("quizForm");
-    const result = document.getElementById("result");
-
-    const answers = {
-        q1: "b",
-        q2: "a",
-        q3: "a",
-        q4: "c",
-        q5: "b"
-    };
-
-    quizForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        let score = 0;
-        const totalQuestions = Object.keys(answers).length;
-
-        for (let question in answers) {
-            const selectedAnswer = document.querySelector(
-                'input[name="' + question + '"]:checked'
-            );
-
-            if (selectedAnswer && selectedAnswer.value === answers[question]) {
-                score++;
-            }
-        }
-
-        result.textContent =
-            "Your Score: " + score + " / " + totalQuestions;
-    });
-
-    quizForm.addEventListener("reset", function() {
-        result.textContent = "";
-    });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
