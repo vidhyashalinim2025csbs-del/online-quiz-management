@@ -1,4 +1,4 @@
-```javascript
+
 const express = require("express");
 const cors = require("cors");
 
@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
 
 const questions = [
     {
@@ -84,4 +85,4 @@ app.post("/api/submit", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-```
+
