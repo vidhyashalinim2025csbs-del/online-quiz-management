@@ -1,0 +1,203 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4ff;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: #4338ca;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            background: #312e81;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+        }
+
+        .container {
+            max-width: 700px;
+            background: white;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #ccc;
+        }
+
+        h2 {
+            color: #4338ca;
+        }
+
+        .question {
+            background: #f7f7ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .question label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            background: #4338ca;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #312e81;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: green;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header id="home">
+    <h1>Online Quiz Management System</h1>
+    <p>Test Your Knowledge!</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#quiz">Take Quiz</a>
+    <a href="#about">About</a>
+</nav>
+
+<div class="container" id="quiz">
+    <h2>Computer Science Quiz</h2>
+    <p>Select one answer for each question.</p>
+
+    <form id="quizForm">
+
+        <div class="question">
+            <p>1. Which language is commonly used for object-oriented programming?</p>
+            <label><input type="radio" name="q1" value="a" required> HTML</label>
+            <label><input type="radio" name="q1" value="b"> Java</label>
+            <label><input type="radio" name="q1" value="c"> CSS</label>
+        </div>
+
+        <div class="question">
+            <p>2. What does HTML stand for?</p>
+            <label><input type="radio" name="q2" value="a" required> Hyper Text Markup Language</label>
+            <label><input type="radio" name="q2" value="b"> High Text Machine Language</label>
+            <label><input type="radio" name="q2" value="c"> Hyper Transfer Main Language</label>
+        </div>
+
+        <div class="question">
+            <p>3. Which one is a database management system?</p>
+            <label><input type="radio" name="q3" value="a" required> MySQL</label>
+            <label><input type="radio" name="q3" value="b"> HTML</label>
+            <label><input type="radio" name="q3" value="c"> CSS</label>
+        </div>
+
+        <div class="question">
+            <p>4. Which symbol ends a Java statement?</p>
+            <label><input type="radio" name="q4" value="a" required> :</label>
+            <label><input type="radio" name="q4" value="b"> ,</label>
+            <label><input type="radio" name="q4" value="c"> ;</label>
+        </div>
+
+        <div class="question">
+            <p>5. Which technology is used to style web pages?</p>
+            <label><input type="radio" name="q5" value="a" required> Java</label>
+            <label><input type="radio" name="q5" value="b"> CSS</label>
+            <label><input type="radio" name="q5" value="c"> SQL</label>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+        <button type="reset">Reset Quiz</button>
+
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<div class="container" id="about">
+    <h2>About This Project</h2>
+    <p>
+        The Online Quiz Management System is a web application
+        that allows students to answer multiple-choice questions
+        and view their scores immediately after submission.
+    </p>
+</div>
+
+<footer>
+    <p>Online Quiz Management System | Student Project</p>
+</footer>
+
+<script>
+    const quizForm = document.getElementById("quizForm");
+    const result = document.getElementById("result");
+
+    const answers = {
+        q1: "b",
+        q2: "a",
+        q3: "a",
+        q4: "c",
+        q5: "b"
+    };
+
+    quizForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let score = 0;
+        const totalQuestions = Object.keys(answers).length;
+
+        for (let question in answers) {
+            const selectedAnswer = document.querySelector(
+                'input[name="' + question + '"]:checked'
+            );
+
+            if (selectedAnswer && selectedAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+
+        result.textContent =
+            "Your Score: " + score + " / " + totalQuestions;
+    });
+
+    quizForm.addEventListener("reset", function() {
+        result.textContent = "";
+    });
+</script>
+
+</body>
+</html>
+```
